@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Animated, Easing } from 'react-native'
+import AddProduct from './AddProduct'
 
 class Header extends React.Component{
   
@@ -21,6 +22,8 @@ _onPress = () => {
   
     const { header, txt } = styl
     return (
+      <View style={{flex:1}}>
+
        <View style={[ header, {backgroundColor: buttonBg} ]}>            
           <TouchableOpacity onPress={this._onPress}>
           
@@ -28,7 +31,10 @@ _onPress = () => {
           
           </TouchableOpacity>
         </View>
+
+        <AddProduct />
        
+       </View>
     )
   }
 } 
@@ -78,7 +84,7 @@ export default class App extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ddd',
+    backgroundColor: '#ecf0f1',
   }
 })
   
