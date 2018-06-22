@@ -10,7 +10,7 @@ export default class App extends React.Component{
   }
 
   _onStateChange = (newState) => {
-    const value = newState?"red":"yellow"
+    const value = newState?"#eaeaea":"#eaeaea"
     this.setState({
       bgColorToggle:value
     })

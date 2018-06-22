@@ -20,14 +20,24 @@ animatedButton(newState){
     Animated.timing(this.state.animated,{
         toValue:newState?1:0,
         duration:1000,
+        easing: Easing.bounce
     }).start()
 }
+
+// spring animation example
+// animatedButton(newState){
+//     this.state.animated.setValue(newState?0:1)
+//     Animated.spring(this.state.animated,{
+//         toValue:newState?1:0,
+//         duration:1000,
+//     }).start()
+// }
 
 
   render() {
     const {toggle, animated} = this.state
-    const appTitle = toggle?"My App":"ppA yM"
-    const buttonBg = toggle?"dodgerblue":"dodgerblue"
+    const appTitle = toggle?"My App":"My App"
+    const buttonBg = toggle?"dodgerblue":"#eaeaea"
   
     const { txt } = styles
     return (
@@ -36,6 +46,7 @@ animatedButton(newState){
        <View style={[ {backgroundColor: buttonBg} ]}>            
           <TouchableOpacity 
           style={{
+                backgroundColor: 'dodgerblue',
                 alignItems: 'center',
                 padding: 30,
                 paddingTop: 45,
