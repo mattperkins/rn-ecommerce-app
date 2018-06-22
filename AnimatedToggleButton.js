@@ -27,17 +27,24 @@ animatedButton(newState){
   render() {
     const {toggle, animated} = this.state
     const appTitle = toggle?"My App":"ppA yM"
-    const buttonBg = toggle?"dodgerblue":"#eaeaea"
+    const buttonBg = toggle?"dodgerblue":"dodgerblue"
   
-    const { header, txt } = styl
+    const { txt } = styles
     return (
       <View>
 
-       <View style={[ header ]}>            
-          <TouchableOpacity onPress={this._onPress}>
+       <View style={[ {backgroundColor: buttonBg} ]}>            
+          <TouchableOpacity 
+          style={{
+                alignItems: 'center',
+                padding: 30,
+                paddingTop: 45,
+                width: '100%'
+          }}
+          onPress={this._onPress}>
           
-          <Animated.View style={{ 
-                    backgroundColor: buttonBg,
+          <Animated.View style={{
+                    backgroundColor: '#eaeaea',
                     position: 'absolute',
                     left:0,top:0,right:0,bottom:0,
                     transform: [
@@ -62,17 +69,11 @@ animatedButton(newState){
 } 
     
         
-const styl = {
-  header:{
-    alignItems: 'center',
-    padding: 30,
-    paddingTop: 45,
-    width: '100%'
-  },
+const styles = StyleSheet.create({
   txt:{
     fontSize: 24
   }
-}
+})
   
 
 
