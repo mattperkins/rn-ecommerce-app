@@ -5,25 +5,12 @@ import AnimatedToggleButton from './AnimatedToggleButton'
   
 export default class App extends React.Component{
   
-  state={
-    value: ""
-  }
-
-  // _onStateChange = (newState) => {
-  //   const value = newState?"#fff":"#fff"
-  //   this.setState({
-  //     bgColorToggle:value
-  //   })
-  // }
-
     render(){      
 
       return (
         <View style={[styles.container]}>
-        {/* {backgroundColor: this.state.bgColorToggle} */}
         
                 <AnimatedToggleButton />
-        {/* onStateChange={this._onStateChange} */}
 
 
                 <AddProduct />
@@ -37,7 +24,7 @@ export default class App extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eaeaea'
+    backgroundColor: '#ecf0f1'
   }
 })
   

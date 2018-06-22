@@ -8,14 +8,14 @@ export default class App extends Component {
   
   addProduct = () => {
     this.setState((prevState) => ({
-      "productCount": prevState.productCount + 1    
+      "productCount": prevState.productCount + 1
     }))
   }
   
   render() {
     return (
       <View style={styles.container}>
-        <Button title="Add Product" onPress={this.addProduct} />
+        <Button color={'red'} title="Add Product" onPress={this.addProduct} />
         
         <Text style={{marginTop: 50, fontSize: 24}}>{this.state.productCount}</Text>
       </View>
