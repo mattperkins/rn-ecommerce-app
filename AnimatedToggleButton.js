@@ -5,20 +5,20 @@ export default class AnimatedToggleButton extends React.Component{
   
     state={
      toggle: true,
-     animated: new Animated.Value(0)
+     animated: new Animated.Value(1)
    }
  
 _onPress = () => {
   const newState = !this.state.toggle
-  this.animatedButton(newState)
+  this.animatedButton()
   this.setState({toggle:newState})
   this.props.onStateChange && this.props.onStateChange(newState)
   } 
 
-animatedButton(newState){
-    this.state.animated.setValue(newState?0:1)
+animatedButton(){
+    this.state.animated.setValue(0)
     Animated.timing(this.state.animated,{
-        toValue:newState?1:0,
+        toValue:1,
         duration:1000,
         easing: Easing.bounce
     }).start()
@@ -37,16 +37,15 @@ animatedButton(newState){
   render() {
     const {toggle, animated} = this.state
     const appTitle = toggle?"My App":"My App"
-    const buttonBg = toggle?"dodgerblue":"#eaeaea"
   
     const { txt } = styles
     return (
       <View>
 
-       <View style={[ {backgroundColor: buttonBg} ]}>            
+       <View>            
           <TouchableOpacity 
           style={{
-                backgroundColor: 'dodgerblue',
+                backgroundColor: '#ecf0f1',
                 alignItems: 'center',
                 padding: 30,
                 paddingTop: 45,
@@ -55,7 +54,7 @@ animatedButton(newState){
           onPress={this._onPress}>
           
           <Animated.View style={{
-                    backgroundColor: '#eaeaea',
+                    backgroundColor: 'dodgerblue',
                     position: 'absolute',
                     left:0,top:0,right:0,bottom:0,
                     transform: [

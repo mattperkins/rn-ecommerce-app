@@ -9,19 +9,22 @@ export default class App extends React.Component{
     value: ""
   }
 
-  _onStateChange = (newState) => {
-    const value = newState?"#eaeaea":"#eaeaea"
-    this.setState({
-      bgColorToggle:value
-    })
-  }
+  // _onStateChange = (newState) => {
+  //   const value = newState?"#fff":"#fff"
+  //   this.setState({
+  //     bgColorToggle:value
+  //   })
+  // }
 
     render(){      
 
       return (
-        <View style={[styles.container, {backgroundColor: this.state.bgColorToggle}]}>
+        <View style={[styles.container]}>
+        {/* {backgroundColor: this.state.bgColorToggle} */}
+        
+                <AnimatedToggleButton />
+        {/* onStateChange={this._onStateChange} */}
 
-                <AnimatedToggleButton onStateChange={this._onStateChange}/>
 
                 <AddProduct />
 
@@ -34,7 +37,7 @@ export default class App extends React.Component{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#eaeaea'
   }
 })
   
