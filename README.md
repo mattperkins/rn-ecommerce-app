@@ -3,6 +3,4 @@
 # RUN 
 ## yarn run ios
 # ENDPOINTS 
-## localhost:  
-# DEPLOY 
-## npm build
+## localhost: SIMULATOR 
