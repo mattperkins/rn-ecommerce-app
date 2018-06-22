@@ -1,8 +1,8 @@
 # INSTALL 
 ## yarn 
 # RUN 
-## yarn start 
+## yarn run ios
 # ENDPOINTS 
-## localhost: 
+## localhost:  
 # DEPLOY 
 ## npm build
