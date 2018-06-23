@@ -81,7 +81,8 @@ animatedButton(){
         
 const styles = StyleSheet.create({
   txt:{
-    fontSize: 24
+    fontSize: 24,
+    color: 'white'
   }
 })
   
