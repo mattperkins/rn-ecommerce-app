@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableWithoutFeedback } from 'react-native';
 
 export default class App extends Component {
   state = { 
@@ -17,6 +17,8 @@ export default class App extends Component {
       <View style={styles.container}>
         <Button color={'red'} title="Add Product" onPress={this.addProduct} />
         
+        <TouchableWithoutFeedback onLongPress={this.addProduct}><View><Text style={{color: 'red', fontSize: 18}}>Long Press</Text></View></TouchableWithoutFeedback>
+
         <Text style={{marginTop: 50, fontSize: 24}}>{this.state.productCount}</Text>
       </View>
     );
