@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Platform } from 'react-native'
+import { View, Text, Platform, StyleSheet } from 'react-native'
 
 export default class PlatformDimensions extends React.Component{
 
@@ -23,9 +23,9 @@ export default class PlatformDimensions extends React.Component{
     render(){
         
         return (
-            <View>
+            <View style={[styles.lemon, {padding: 20}]}>
                 { this.checkSupport() ? 
-                    <Text>
+                    <Text style={{color: 'white'}}>
                     { 
                     this.state.os  === 'ios' ? 
                             'Welcome to IOS!' :
@@ -39,3 +39,12 @@ export default class PlatformDimensions extends React.Component{
         )
     }
 }
+
+const styles = StyleSheet.create({
+    lemon:{
+        ...Platform.select({
+            ios:{backgroundColor: '#f33'},
+            android:{backgroundColor:'#33f'}
+        })
+    }
+})
