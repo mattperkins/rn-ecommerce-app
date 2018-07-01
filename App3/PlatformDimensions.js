@@ -23,7 +23,8 @@ export default class PlatformDimensions extends React.Component{
     render(){
     
     Dimensions.addEventListener("change",(ds) => {
-        console.log(ds.window)
+        console.log(ds)
+        // console.log(ds.window)
     })        
 
         return (
