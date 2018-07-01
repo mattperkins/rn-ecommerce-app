@@ -1,7 +1,7 @@
 import { AppRegistry } from 'react-native'
-import App3 from './App3/App3'
+import App4 from './App4/App4'
 import { YellowBox } from 'react-native'
 YellowBox.ignoreWarnings (
     [ 'Warning: isMounted(...) is deprecated', 'Module RCTImageLoader' ]
 )
-AppRegistry.registerComponent('space_monkey', () => App3)
+AppRegistry.registerComponent('space_monkey', () => App4)
