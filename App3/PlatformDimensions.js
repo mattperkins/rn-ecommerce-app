@@ -10,7 +10,7 @@ export default class PlatformDimensions extends React.Component{
          orientation: Dimensions.get('window').height > 500 ? 'Portrait' : 'Landscape'
     }
 
-    Dimensions.addEventListener("change", (ds) => {
+    Dimensions.addEventListener("rotate", (ds) => {
        this.setState({
             orientation: ds.window.height > 500 ? 'Portrait' : 'Landscape'
        })
@@ -33,7 +33,7 @@ export default class PlatformDimensions extends React.Component{
     }
 
     componentWillUnmount(){
-        Dimensions.removeEventListener("change")
+        Dimensions.removeEventListener("rotate")
     }
 
     render(){        
