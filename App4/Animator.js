@@ -21,10 +21,13 @@ export default class App4 extends React.Component{
             <View>
 
                 <Animated.View
-                    style={{
-                        left: this.redSquare.x,
-                        top: this.redSquare.y
-                    }}
+                    // style={{
+                    //     left: this.redSquare.x,
+                    //     top: this.redSquare.y
+                    // }}
+                    
+                    // same as above - but specific to ValueXY operation
+                    style={this.redSquare.getLayout()}
                 >
                     <View style={{backgroundColor: 'red', width: 40, height: 40}}></View>
                 </Animated.View>
