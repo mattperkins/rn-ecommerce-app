@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Platform, StyleSheet } from 'react-native'
+import { View, Text, Platform, StyleSheet, Dimensions } from 'react-native'
 
 export default class PlatformDimensions extends React.Component{
 
@@ -21,7 +21,11 @@ export default class PlatformDimensions extends React.Component{
             return true
     }
     render(){
-        
+    
+    Dimensions.addEventListener("change",(ds) => {
+        console.log(ds.window)
+    })        
+
         return (
             <View style={[styles.lemon, {padding: 20}]}>
                 { this.checkSupport() ? 
