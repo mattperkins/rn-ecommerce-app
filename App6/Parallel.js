@@ -32,6 +32,7 @@ export default class Parallel extends React.Component{
             })
         ]).start()
 
+        // The Parallel Animation can also be used in the sequence above
 
         // Parallel Animation
         // Animated.parallel([
@@ -41,7 +42,7 @@ export default class Parallel extends React.Component{
         //     Animated.timing(this.state.greenSquare,{
         //         toValue: 0
         //     })
-        // ]).start()
+        // ]).start() 
     }
 
     render(){
