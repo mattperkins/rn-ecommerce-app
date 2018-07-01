@@ -7,10 +7,18 @@ export default class PlatformDimensions extends React.Component{
     super(props)
         this.state = {
          os: Platform.OS,
-         orientation: Dimensions.get('window').height > 500 ? 'Portrait' : 'Landscape'
+         orientation: Dimensions.get('window').height > 500 ? 'Portrait' : 'Landscape',
+         rotateColour: 'red'
     }
+
+    Dimensions.addEventListener("change", (ds) => {
+       this.setState({
+            orientation: ds.window.height > 500 ? 'Portrait' : 'Landscape',      
+            rotateColour: ds.window.height > 500 ? 'red' : 'blue',      
+       })
+    })
     }
-    
+
     
     checkSupport = ()=>{
         
@@ -25,17 +33,17 @@ export default class PlatformDimensions extends React.Component{
         }
             return true
     }
-    render(){
-    
-    Dimensions.addEventListener("change",(ds) => {
-        console.log(ds)
-        // console.log(ds.window)
-    })        
+
+    componentWillUnmount(){
+        Dimensions.removeEventListener("change")
+    }
+
+    render(){        
 
         return (
             <View style={[styles.lemon, {padding: 20}]}>
-            
-                <Text>{this.state.orientation}</Text>
+
+                <Text style={{backgroundColor: this.state.rotateColour}}>{this.state.orientation}</Text>
 
 
                 { this.checkSupport() ? 
