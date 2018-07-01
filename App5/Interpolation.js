@@ -1,7 +1,7 @@
 import React from 'react'
-import { View, Animated, Easing, Button } from 'react-native'
+import { View, Text, Animated, Button } from 'react-native'
 
-export default class App4 extends React.Component{
+export default class Interpolation extends React.Component{
 
     constructor(props) {
     super(props)
@@ -46,9 +46,22 @@ export default class App4 extends React.Component{
                         // })
                     }}
                 >
-                    <View style={{backgroundColor: 'red', width: 40, height: 40}}></View>
+                    <View style={{backgroundColor: 'red', width: 65, height: 40}}></View>
                 
-                
+                <Animated.Text
+                    style={{
+                        fontSize: this.state.redSquare.interpolate({
+                            inputRange: [0,1],
+                            outputRange: [20, 0]
+                        }),
+                        color: this.state.redSquare.interpolate({
+                            inputRange: [0,1],
+                            outputRange: ['red', 'green']
+                        })
+                }}>
+                    <Text>Animation</Text>
+                </Animated.Text>
+
                 </Animated.View>
 
                 <Button 
