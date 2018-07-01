@@ -3,9 +3,14 @@ import { View, Text, Platform, StyleSheet, Dimensions } from 'react-native'
 
 export default class PlatformDimensions extends React.Component{
 
-    state={
-        os: Platform.OS
+    constructor(props) {
+    super(props)
+        this.state = {
+         os: Platform.OS,
+         orientation: Dimensions.get('window').height > 500 ? 'Portrait' : 'Landscape'
     }
+    }
+    
     
     checkSupport = ()=>{
         
@@ -29,6 +34,10 @@ export default class PlatformDimensions extends React.Component{
 
         return (
             <View style={[styles.lemon, {padding: 20}]}>
+            
+                <Text>{this.state.orientation}</Text>
+
+
                 { this.checkSupport() ? 
                     <Text style={{color: 'white'}}>
                     { 
