@@ -7,14 +7,12 @@ export default class PlatformDimensions extends React.Component{
     super(props)
         this.state = {
          os: Platform.OS,
-         orientation: Dimensions.get('window').height > 500 ? 'Portrait' : 'Landscape',
-         rotateColour: 'red'
+         orientation: Dimensions.get('window').height > 500 ? 'Portrait' : 'Landscape'
     }
 
     Dimensions.addEventListener("change", (ds) => {
        this.setState({
-            orientation: ds.window.height > 500 ? 'Portrait' : 'Landscape',      
-            rotateColour: ds.window.height > 500 ? 'red' : 'blue',      
+            orientation: ds.window.height > 500 ? 'Portrait' : 'Landscape'
        })
     })
     }
@@ -43,7 +41,7 @@ export default class PlatformDimensions extends React.Component{
         return (
             <View style={[styles.lemon, {padding: 20}]}>
 
-                <Text style={{backgroundColor: this.state.rotateColour}}>{this.state.orientation}</Text>
+                <Text style={{backgroundColor: this.state.orientation === 'Portrait' ? 'red' : 'blue'}}>{this.state.orientation}</Text>
 
 
                 { this.checkSupport() ? 
