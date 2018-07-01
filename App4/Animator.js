@@ -20,17 +20,29 @@ export default class App4 extends React.Component{
             easing: Easing.bounce
         }).start()
 
-    }
 
+    this.yellowSquare = new Animated.Value(0)
 
+        Animated.timing(this.yellowSquare, {
+                toValue: 100,
+                duration: 1000,
+                delay: 1000,
+                easing: Easing.bounce
+            }).start()
+    
+    }// end constructor
+    
+        
+
+    // button click for red square
     runAnimation = () => {
         Animated.spring(this.state.redSquare, {
             toValue:{ x:100, y:300 },
-            friction: 1,
-            delay: 1000
+            friction: 1
         }).start()
     }
 
+    
 
     render(){
         return (
@@ -46,6 +58,11 @@ export default class App4 extends React.Component{
                     style={this.state.redSquare.getLayout()}
                 >
                     <View style={{backgroundColor: 'red', width: 40, height: 40}}></View>
+                
+                <Button 
+                    title="Press to activate red box"
+                    onPress={this.runAnimation}
+                />
                 </Animated.View>
 
                 <Animated.View
@@ -61,10 +78,16 @@ export default class App4 extends React.Component{
                 </Animated.View>
 
 
-                <Button 
-                    title="Start animation"
-                    onPress={this.runAnimation}
-                />
+                <Animated.View
+                    style={{
+                        top: this.yellowSquare,
+                        opacity: this.yellowSquare
+                    }}
+                >
+                    
+                    <View style={{backgroundColor: 'yellow', width: 140, height: 140}}></View>
+                </Animated.View>
+
             </View>
         )
     }
