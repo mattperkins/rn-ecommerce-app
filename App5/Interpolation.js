@@ -28,9 +28,18 @@ export default class App4 extends React.Component{
             
             <View>
 
+                {/* adding opacity, slide left and rotate style animation properties */}
                 <Animated.View
                     style={{
-                        opacity: this.state.redSquare,
+                        // opacity: this.state.redSquare,
+                        transform: [
+                            {
+                                rotateX: this.state.redSquare.interpolate({
+                                    inputRange: [0, 0.5, 1],
+                                    outputRange: ['0deg', '180deg', '0deg']            
+                                }) 
+                            }
+                        ]
                         // right: this.state.redSquare.interpolate({
                         //     inputRange: [0,1],
                         //     outputRange: [100, 0]
