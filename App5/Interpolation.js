@@ -31,10 +31,10 @@ export default class App4 extends React.Component{
                 <Animated.View
                     style={{
                         opacity: this.state.redSquare,
-                        right: this.state.redSquare.interpolate({
-                            inputRange: [0,1],
-                            outputRange: [100, 0]
-                        })
+                        // right: this.state.redSquare.interpolate({
+                        //     inputRange: [0,1],
+                        //     outputRange: [100, 0]
+                        // })
                     }}
                 >
                     <View style={{backgroundColor: 'red', width: 40, height: 40}}></View>
