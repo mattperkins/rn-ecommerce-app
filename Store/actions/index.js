@@ -1,12 +1,9 @@
 import axios from 'axios'
 const FIREBASEDB = "https://rn-ecommerce-app.firebaseio.com"
-const APIKEY = "AIzaSyCSZLvYFfswlYRgasrtNBcHrCHh2acygik"
-const REGISTER = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key="
-
 
 export function getUsers(){
     const req = axios.get(`${FIREBASEDB}/users.json`)
-        // .then(res => res.data)
+
         .then(res => {
             let users = []
 
@@ -90,25 +87,3 @@ export function deleteUser(USER_ID){
 
 
 
-export function registerUser(data){
-
-    const req = axios({
-
-        method: "POST",
-        url: `${REGISTER}${APIKEY}`,
-        data:{
-            email: data.email ,
-            password: data.password,
-            returnSecureToken: true
-        },
-        header:{
-            "Content-Type": "application/json"
-        }
-
-    }).then(res => res.data)
-
-    return {
-        type: "USER-REGISTER",
-        payload: req
-    }
-}

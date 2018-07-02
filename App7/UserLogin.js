@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
 import {connect} from 'react-redux'
-import { registerUser } from '../Store/actions'
+import {  } from '../Store/actions'
 import { bindActionCreators } from 'redux'
 
 
@@ -20,11 +20,7 @@ class UserLogin extends Component{
         this.setState({password})
     }
 
-    LoginUser = () => {
-        
-        this.props.registerUser(this.state)
     
-    }
 
     componentDidMount(){
         // this.props.getUsers()
@@ -60,7 +56,6 @@ class UserLogin extends Component{
             
                 <Button 
                         title="Login"
-                        onPress={this.LoginUser}        
                 />
             </View>
         )
@@ -95,7 +90,7 @@ function mapStateToProps(state){
 }
     
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({registerUser},dispatch)
+    return bindActionCreators({},dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserLogin)
