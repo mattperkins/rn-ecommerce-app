@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { getUsers } from '../Store/actions'
 import { bindActionCreators } from 'redux'
+import InputData from './InputData'
 
 class Users_redux extends Component {
 
@@ -15,14 +16,14 @@ super(props)
  
    return (
     <View>
-        <Text>Users</Text>
+        <InputData />
     </View>
 )
 }
 }
 
 function mapStateToProps(state){
-    console.log(state)
+    // console.log(state)
     return {
         users:state.users
     }
