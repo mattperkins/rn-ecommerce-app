@@ -1,10 +1,20 @@
 import axios from 'axios'
-const URL = "https://rn-ecommerce-app.firebaseio.com"
 const FIREBASEDB = "https://rn-ecommerce-app.firebaseio.com"
 
 export function getUsers(){
-    const req = axios.get(`${URL}/users.json`)
-        .then(res => res.data)
+    const req = axios.get(`${FIREBASEDB}/users.json`)
+        // .then(res => res.data)
+        .then(res => {
+            let users = []
+
+            for(let key in res.data){
+                users.push({
+                    ...res.data[key],
+                    id:key
+                })
+            }
+            return users
+        })
 
     return {
         type: 'GET_USERS',
@@ -25,4 +35,20 @@ export function addUser(user){
         type: 'ADD_USER',
         payload: req
     }
+}
+
+export function getOneUser(USER_ID){
+    const req = axios(`${FIREBASEDB}/users/${USER_ID}.json`)
+        .then(res => {
+            const getOneUser = {
+                ...res.data,
+                id: USER_ID
+            }
+            return getOneUser
+        })
+
+        return {
+            type: 'GET_ONE_USER',
+            payload: req
+        }
 }

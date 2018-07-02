@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
 // import axios from 'axios'
 import {connect} from 'react-redux'
-import { addUser } from '../Store/actions'
+import { addUser, getUsers, getOneUser } from '../Store/actions'
 import { bindActionCreators } from 'redux'
 
 
@@ -36,6 +36,11 @@ class InputData extends Component{
         //     data: this.state
         // }).then(res => console.log(res.data))
     }
+
+    componentDidMount(){
+        this.props.getUsers()
+        this.props.getOneUser('-LGQr5AKp1IC5SIkjf--')
+    }     
 
     render() {
         const { formContainer, inputWrapper, input } = styles
@@ -92,14 +97,14 @@ const styles = StyleSheet.create({
 
 
 function mapStateToProps(state){
-    console.log(state)
+    // console.log(state)
     return {
         users:state.users
     }
 }
     
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({addUser},dispatch)
+    return bindActionCreators({addUser,getUsers,getOneUser},dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InputData)
