@@ -6,22 +6,23 @@ import { bindActionCreators } from 'redux'
 
 class Users_redux extends Component {
 
- componentDidMount(){
-     this.props.getUsers()
- }
-
+constructor(props) {
+super(props)
+    this.props.getUsers()
+}
 
   render() {
  
    return (
     <View>
-        <Text>Users_redux</Text>
+        <Text>Users</Text>
     </View>
 )
 }
 }
 
 function mapStateToProps(state){
+    console.log(state)
     return {
         users:state.users
     }
