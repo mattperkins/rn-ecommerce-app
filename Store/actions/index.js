@@ -52,3 +52,35 @@ export function getOneUser(USER_ID){
             payload: req
         }
 }
+
+
+export function updateUser(USER_ID){
+
+    const req = axios({
+        method: "PATCH",
+        url: `${FIREBASEDB}/users/${USER_ID}.json`,
+        data:{
+            title: 'Updated Title',
+            body: 'Updated Body'
+        }
+    }).then(res => res.data)
+
+    return {
+            type: 'UPDATE_USER',
+            payload: req
+        }
+
+}
+
+
+export function deleteUser(USER_ID){
+    const req = axios({
+        method: "DELETE",
+        url: `${FIREBASEDB}/users/${USER_ID}.json`
+    }).then(res => res.data)
+
+    return {
+        type: 'DELETE_USER',
+        payload: req
+    }
+}
