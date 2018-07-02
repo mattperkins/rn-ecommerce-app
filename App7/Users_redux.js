@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+// import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import { getUsers } from '../Store/actions'
 import { bindActionCreators } from 'redux'
@@ -15,9 +15,9 @@ super(props)
   render() {
  
    return (
-    <View>
+
         <InputData />
-    </View>
+
 )
 }
 }
