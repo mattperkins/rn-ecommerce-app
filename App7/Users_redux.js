@@ -5,7 +5,12 @@ import { getUsers } from '../Store/actions'
 import { bindActionCreators } from 'redux'
 
 class Users_redux extends Component {
- 
+
+ componentDidMount(){
+     this.props.getUsers()
+ }
+
+
   render() {
  
    return (
@@ -22,5 +27,8 @@ function mapStateToProps(state){
     }
 }
     
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({getUsers},dispatch)
+}
 
-export default Users_redux
+export default connect(mapStateToProps, mapDispatchToProps)(Users_redux)
