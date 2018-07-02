@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, Button } from 'react-native'
-import axios from 'axios'
+// import axios from 'axios'
+import {connect} from 'react-redux'
+import { addUser } from '../Store/actions'
+import { bindActionCreators } from 'redux'
+
 
 class InputData extends Component{
 
@@ -19,15 +23,18 @@ class InputData extends Component{
 
     addUser = () => {
         // console.log(this.state)
-        const FOLDER = "users"
-        const URL = `https://rn-ecommerce-app.firebaseio.com/${FOLDER}.json`
+
+        this.props.addUser(this.state)
+
+        // const FOLDER = "users"
+        // const URL = `https://rn-ecommerce-app.firebaseio.com/${FOLDER}.json`
         
 
-        axios({
-            method:"POST",
-            url: URL,
-            data: this.state
-        }).then(res => console.log(res.data))
+        // axios({
+        //     method:"POST",
+        //     url: URL,
+        //     data: this.state
+        // }).then(res => console.log(res.data))
     }
 
     render() {
@@ -84,4 +91,15 @@ const styles = StyleSheet.create({
 })
 
 
-export default InputData
+function mapStateToProps(state){
+    console.log(state)
+    return {
+        users:state.users
+    }
+}
+    
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({addUser},dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputData)

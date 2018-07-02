@@ -1,8 +1,9 @@
 import axios from 'axios'
-const URL = "https://jsonplaceholder.typicode.com"
+const URL = "https://rn-ecommerce-app.firebaseio.com"
+const FIREBASEDB = "https://rn-ecommerce-app.firebaseio.com"
 
 export function getUsers(){
-    const req = axios.get(`${URL}/posts`)
+    const req = axios.get(`${URL}/users.json`)
         .then(res => res.data)
 
     return {
@@ -10,4 +11,18 @@ export function getUsers(){
         payload: req
     }
 
+}
+
+
+export function addUser(user){
+    const req = axios({
+        method:"POST",
+        url: `${FIREBASEDB}/users.json`,
+        data: user
+        }).then(res => res.data)
+
+    return {
+        type: 'ADD_USER',
+        payload: req
+    }
 }
