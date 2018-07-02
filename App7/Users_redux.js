@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-// import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import { getUsers } from '../Store/actions'
 import { bindActionCreators } from 'redux'
 import InputData from './InputData'
+import UserLogin from './UserLogin'
+
 
 class Users_redux extends Component {
 
@@ -16,8 +18,14 @@ super(props)
  
    return (
 
-        <InputData />
+       <View style={{flex:1}}>
 
+            <InputData />
+
+
+            <UserLogin />
+
+        </View>
 )
 }
 }
