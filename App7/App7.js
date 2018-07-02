@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import Users_redux from './Users_redux'
 
 export default class App7 extends React.Component {
  
@@ -7,7 +8,7 @@ export default class App7 extends React.Component {
  
    return (
     <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-        <Text>Hello, World!</Text>
+        <Users_redux />
     </View>
 )
 }
