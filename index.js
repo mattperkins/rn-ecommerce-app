@@ -1,4 +1,4 @@
-import react from 'react'
+import React from 'react'
 import { AppRegistry } from 'react-native'
 
 import { Provider } from 'react-redux'
@@ -15,7 +15,7 @@ YellowBox.ignoreWarnings (
 
 const createStoreWithMiddleWare = applyMiddleware(promiseMiddleware)(createStore)
 
-const appRedux = () => (
+const AppRedux = () => (
     <Provider store={createStoreWithMiddleWare(reducers)}>
         <App7 />
     </Provider>
@@ -23,4 +23,4 @@ const appRedux = () => (
 
 
 
-AppRegistry.registerComponent('space_monkey', () => App7)
+AppRegistry.registerComponent('space_monkey', () => AppRedux)
