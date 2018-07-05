@@ -36,6 +36,8 @@ export default class App extends Component {
  }
 
 
+
+// Component render method
   render() {
  
    return (
