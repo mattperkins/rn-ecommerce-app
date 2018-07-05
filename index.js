@@ -1,6 +1,6 @@
 import { AppRegistry } from 'react-native'
 import React, { Component } from 'react'
-import { Text, View, Image, Dimensions, Animated } from 'react-native'
+import { Text, View, Image, Dimensions, Animated, PanResponder } from 'react-native'
 
 import { YellowBox } from 'react-native'
 YellowBox.ignoreWarnings (
@@ -24,14 +24,14 @@ export default class App extends Component {
      return Users.map((item,i) => {
          return (
             <Animated.View 
-                key={i}
-                style={{height:SCREEN_HEIGHT-120, width: SCREEN_WIDTH, padding: 10}}>
+                key={item.id}
+                style={{height:SCREEN_HEIGHT-120, width: SCREEN_WIDTH, padding: 10, position: 'absolute'}}>
                 <Image
                     style={{ flex:1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }} 
                     source={item.lemon} />
             </Animated.View>
          )
-     })
+     }).reverse()
 
  }
 
