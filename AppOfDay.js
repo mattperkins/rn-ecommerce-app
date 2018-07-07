@@ -1,35 +1,39 @@
-import React, { Component } from 'react' 
-import {  StyleSheet, Text, View, Image, ScrollView, Dimensions } from 'react-native'
+import React from 'react' 
+import { Image, ScrollView, TouchableWithoutFeedback, Animated, Dimensions, SafeAreaView } from 'react-native'
 
+let SCREEN_WIDTH = Dimensions.get('window').width
+let SCREEN_HEIGHT = Dimensions.get('window').height
 const images = [
-    { id:1, lemon: { uri: "https://placehold.it/200"} },
-    { id:2, lemon: { uri: "https://placehold.it/250"} }
+    { id:1, src: "https://picsum.photos/1001" },
+    { id:2, src: "https://picsum.photos/1002" }
 ]
 
-export default class AppOfDay extends Component {
+export default class AppOfDay extends React.Component {
  
   render() {
          
    return (
-       <ScrollView 
-            style={{flex:1}}
-       >
-            {images.map((item,i) => {
-                <Image 
-                    key={item.id}
-                    style={styles.img}
-                    source={item.lemon}
-                />
-            })}
-           
-       </ScrollView>
+       <SafeAreaView style={{flex:1}}>
+            <ScrollView 
+                    style={{flex:1}}
+            >
+                
+                    {images.map((image, i) => {
+
+                        return (
+                            <TouchableWithoutFeedback key={image.id}>
+                                <Animated.View
+                                    style={{ height: SCREEN_HEIGHT -150, width: SCREEN_WIDTH, padding: 15 }}
+                                >
+                                    <Image source={{uri: image.src}} style={{flex:1, width: null, height: null, resizeMode: 'cover', borderRadius: 20}}/>
+                                </Animated.View>
+                            </TouchableWithoutFeedback>
+                            )
+                    })}
+
+            </ScrollView>
+       </SafeAreaView>
 )
 }
 }
 
-const styles = StyleSheet.create({
-    img: {
-        height:200,
-        width:200
-    }
-})
