@@ -8,6 +8,12 @@ const images = [
     { id: 2, src: "https://picsum.photos/1002" }
 ]
 
+constructor(props){
+    super(props)
+
+    this.allImages = {}
+}
+
 export default class AppOfDay extends React.Component {
 
     render() {
@@ -25,7 +31,9 @@ export default class AppOfDay extends React.Component {
                                 <Animated.View
                                     style={{ height: SCREEN_HEIGHT - 150, width: SCREEN_WIDTH, padding: 15 }}
                                 >
-                                    <Image source={{ uri: image.src }} style={{ flex: 1, width: null, height: null, resizeMode: 'cover', borderRadius: 20 }} />
+                                    <Image
+                                        ref={(image) => (this.allImages[i] = image)}
+                                        source={{ uri: image.src }} style={{ flex: 1, width: null, height: null, resizeMode: 'cover', borderRadius: 20 }} />
                                 </Animated.View>
                             </TouchableWithoutFeedback>
                         )
