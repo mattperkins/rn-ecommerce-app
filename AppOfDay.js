@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, ScrollView, TouchableWithoutFeedback, Animated, Dimensions, SafeAreaView, StyleSheet } from 'react-native'
+import { View, Text, Image, ScrollView, TouchableWithoutFeedback, Animated, Easing, Dimensions, SafeAreaView, StyleSheet } from 'react-native'
 
 let SCREEN_WIDTH = Dimensions.get('window').width
 let SCREEN_HEIGHT = Dimensions.get('window').height
@@ -58,9 +58,10 @@ export default class AppOfDay extends React.Component {
                         }),
 
 
-                        Animated.timing(this.position.y, {
+                        Animated.spring(this.position.y, {
                             toValue: dPageY,
-                            duration: 300
+                            duration: 300,
+                            friction: 6
                         }),
 
 
@@ -70,14 +71,17 @@ export default class AppOfDay extends React.Component {
                         }),
 
 
-                        Animated.timing(this.dimensions.y, {
+                        Animated.spring(this.dimensions.y, {
                             toValue: dHeight,
-                            duration: 300
+                            duration: 300,
+                            // easing: Easing.elastic(1)
+                            friction: 6
                         }),
 
                         Animated.timing(this.animation, {
                             toValue: 1,
-                            duration: 300
+                            duration: 150,
+                            easing: Easing.ease
                         })
                     ]).start()
 
@@ -95,6 +99,26 @@ export default class AppOfDay extends React.Component {
             left: this.position.x,
             top: this.position.y
         }
+
+
+        const animatedContentY = this.animation.interpolate({
+            inputRange: [0, 1],
+            outputRange: [250, 0]
+        })
+
+        const animatedContentOpacity = this.animation.interpolate({
+            inputRange: [0, 0.5, 1],
+            outputRange: [0, 1, 1]
+        })
+
+
+        const animatedContentStyle = {
+            opacity: animatedContentOpacity,
+            transform: [{
+                translateY: animatedContentY
+            }]
+        }
+
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -128,7 +152,7 @@ export default class AppOfDay extends React.Component {
                 >
 
                     <View
-                        style={{ flex: 2 }}
+                        style={{ flex: 2, zIndex: 2 }}
                         ref={(view) => (this.viewImage = view)}
                     >
                         <Animated.Image
@@ -139,7 +163,7 @@ export default class AppOfDay extends React.Component {
 
 
                     <Animated.View
-                        style={{ flex: 1, backgroundColor: 'white', padding: 20, paddingTop: 50 }}
+                        style={[{ flex: 1, zIndex: 1, backgroundColor: 'white', padding: 20, paddingTop: 50 }, animatedContentStyle]}
                     >
                         <Text
                             style={{ fontSize: 24, paddingBottom: 10 }}
