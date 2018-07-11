@@ -54,7 +54,8 @@ export default class AppOfDay extends React.Component {
                     Animated.parallel([
                         Animated.timing(this.position.x, {
                             toValue: dPageX,
-                            duration: 300
+                            duration: 300,
+                            friction: 6
                         }),
 
 
@@ -67,7 +68,8 @@ export default class AppOfDay extends React.Component {
 
                         Animated.timing(this.dimensions.x, {
                             toValue: dWidth,
-                            duration: 300
+                            duration: 300,
+                            friction: 6
                         }),
 
 
@@ -184,13 +186,14 @@ export default class AppOfDay extends React.Component {
                                     {/* source={{ uri: image.src }} */}
                                     <Image
                                         ref={(image) => (this.allImages[i] = image)}
-                                        source={image.src} style={{ flex: 1, width: null, height: null, resizeMode: 'cover', borderRadius: 20 }} />
+                                        source={image.src} style={{ flex: 1, width: null, height: null, resizeMode: 'cover' }} />
                                 </Animated.View>
                             </TouchableWithoutFeedback>
                         )
                     })}
 
                 </ScrollView>
+
 
                 <View
                     style={StyleSheet.absoluteFill}
@@ -208,7 +211,7 @@ export default class AppOfDay extends React.Component {
                         <TouchableWithoutFeedback onPress={() => this.closeImage()} >
                             <Animated.View
                                 style={[{
-                                    position: 'absolute', top: 30, right: 40, width: 20, height: 20, borderRadius: 10, backgroundColor: '#fff', flex: 1, alignItems: 'center', justifyContent: 'center'
+                                    position: 'absolute', top: 30, right: 40, width: 20, height: 20, backgroundColor: '#fff', flex: 1, alignItems: 'center', justifyContent: 'center'
                                 }, animatedCrossOpacity]}>
                                 <Text
                                     style={{
