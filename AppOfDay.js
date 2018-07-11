@@ -91,6 +91,48 @@ export default class AppOfDay extends React.Component {
         )
     }
 
+    closeImage = () => {
+
+        Animated.parallel([
+            Animated.timing(this.position.x, {
+                toValue: this.oldPosition.x,
+                duration: 300
+            }),
+
+
+            Animated.spring(this.position.y, {
+                toValue: this.oldPosition.y,
+                duration: 300,
+                friction: 6
+            }),
+
+
+            Animated.timing(this.dimensions.x, {
+                toValue: this.oldPosition.width,
+                duration: 300
+            }),
+
+
+            Animated.spring(this.dimensions.y, {
+                toValue: this.oldPosition.height,
+                duration: 300,
+                // easing: Easing.elastic(1)
+                friction: 6
+            }),
+
+            Animated.timing(this.animation, {
+                toValue: 0,
+                duration: 150,
+                easing: Easing.ease
+            })
+        ]).start(() => {
+            this.setState({
+                activeImage: null
+            })
+        })
+    }
+
+
     render() {
 
         const activeImageStyle = {
@@ -119,6 +161,10 @@ export default class AppOfDay extends React.Component {
             }]
         }
 
+
+        const animatedCrossOpacity = {
+            opacity: this.animation
+        }
 
         return (
             <SafeAreaView style={{ flex: 1 }}>
@@ -159,6 +205,17 @@ export default class AppOfDay extends React.Component {
                             source={this.state.activeImage ? this.state.activeImage.src : null}
                             style={[{ resizeMode: 'cover', top: 0, left: 0, height: null, width: null }, activeImageStyle]}
                         />
+                        <TouchableWithoutFeedback onPress={() => this.closeImage()} >
+                            <Animated.View
+                                style={[{
+                                    position: 'absolute', top: 30, right: 40, width: 20, height: 20, borderRadius: 10, backgroundColor: '#fff', flex: 1, alignItems: 'center', justifyContent: 'center'
+                                }, animatedCrossOpacity]}>
+                                <Text
+                                    style={{
+                                        fontSize: 12, fontWeight: 'bold', color: '#333'
+                                    }}>x</Text>
+                            </Animated.View>
+                        </TouchableWithoutFeedback>
                     </View>
 
 
